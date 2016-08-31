@@ -1,11 +1,7 @@
 node_modules
 Assets
-/sass
 package.json
 composer-setup.php
 composer.phar
-/node_modules
 sass
 .sass-cache
-/.sass-cache
-.gitignore
