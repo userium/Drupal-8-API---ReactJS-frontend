@@ -8,3 +8,4 @@ composer.phar
 sass
 .sass-cache
 /.sass-cache
+.gitignore
