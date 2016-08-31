@@ -1,0 +1,79 @@
+/* Setup */
+/* =======================================================================
+## ++ Media Queries
+========================================================================== */
+/* 
+    Used for media queries. 
+    Add these mixins in your normal scss flow.
+    
+    Eg.
+    .container{
+        width:1024px;
+        
+        @include tablets{
+            width:90%;
+        }
+    }
+*/
+/* =======================================================================
+## ++ Unit transform
+========================================================================== */
+/*  
+    Used for making containers have width in percentages. 
+    Usage: define elemnt width in px and the width of parent elemnt in px. 
+    eg. .block{width:cp(512px, 1024px)} this will result in .block{width:50%;}   
+*/
+/*  
+    Used for making px values convert to rem values
+    Usage: define font-size in px and it will convert to rems
+    eg. font-size: rem(14px);
+*/
+/* =======================================================================
+## ++ Globals
+========================================================================== */
+/* line 4, ../sass/_globals.scss */
+html {
+  font-size: 100%;
+}
+
+/* line 8, ../sass/_globals.scss */
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
+/* line 12, ../sass/_globals.scss */
+* {
+  box-sizing: border-box;
+}
+
+/* =======================================================================
+## ++ Cleafix
+========================================================================== */
+/* float clearing for IE6 */
+/* line 22, ../sass/_globals.scss */
+* html .clearfix {
+  height: 1%;
+  overflow: visible;
+}
+
+/* float clearing for IE7 */
+/* line 28, ../sass/_globals.scss */
+* + html .clearfix {
+  min-height: 1%;
+}
+
+/* float clearing for everyone else */
+/* line 33, ../sass/_globals.scss */
+.clearfix:after {
+  clear: both;
+  content: ".";
+  display: block;
+  height: 0;
+  visibility: hidden;
+  font-size: 0;
+}
+
+/* line 42, ../sass/_globals.scss */
+.clr {
+  clear: both;
+}
