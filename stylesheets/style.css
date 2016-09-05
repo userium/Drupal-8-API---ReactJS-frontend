@@ -77,3 +77,14 @@ body {
 .clr {
   clear: both;
 }
+
+/* line 1, ../sass/_homepage.scss */
+.title {
+  margin-bottom: 30px;
+}
+
+/* line 5, ../sass/_homepage.scss */
+.events {
+  font-style: italic;
+  font-color: #555;
+}

@@ -1,43 +1,49 @@
 class App extends React.Component {
 
-// Using ES6 class syntax
-
-  constructor(props) {
-    super(props);
-
-    // Setting up initial state
-
-    this.state = {
-      title: ''
-    }
-  }
-  
-  // calling method after the component is rendered for the first time
-  componentDidMount() {
-    this.serverRequest = axios.get(this.props.source).then(event => {    
-         this.setState({
-              title: event.data[2].title[0].value
+constructor() {
+   super();
+   // Setting up initial state
+   this.state = {
+      data: []
+   }
+ }
+ 
+// calling the componentDidMount() method after a component is rendered for the first time
+componentDidMount() {
+   var th = this;
+   this.serverRequest = axios.get(this.props.source)
+     .then(function(event) {    
+          th.setState({
+            data: event.data
           });
-     });
-  }
-  
-  // calling method immediately before a component is unmounted from the DOM
-  componentWillUnmount() {
-    this.serverRequest.abort();
-  }
-  
-  render() {
+      })
+}
+
+// calling the componentWillUnMount() method immediately before a component is unmounted from the DOM
+componentWillUnmount() {
+     this.serverRequest.abort();
+}
+ 
+render() {
+    var titles = []
+    this.state.data.forEach(item => {
+       titles.push(<h3 className="events">{item.title[0].value}</h3> );
+    })
     return (
-      <div>
-        <h1>Here is my event:</h1>
-        <h2>{this.state.title}</h2>
+      <div className="container">
+        <div className="row">
+          <div className="col-md-6 col-md-offset-5">
+            <h1 className="title">All Events</h1>
+            {titles} 
+          </div>
+        </div>
       </div>
-    ); 
-  }
+    );
+ } 
 }
 
 // rendering into the DOM
 ReactDOM.render(
-    <App source="http://localhost:8888/drupalAPI/api/events" />, 
-    document.getElementById('container')
+     <App source="http://localhost:8888/drupalAPI/api/events" />, 
+     document.getElementById('container')
 );
